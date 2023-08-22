@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="buttons">
+            <label class="container">
+                <input type="checkbox">
+                <span class="checkmark btn-10">10</span>
+            </label>
+            <label class="container">
+                <input type="checkbox">
+                <span class="checkmark btn-32">32</span>
+            </label>
+            <label class="container">
+                <input type="checkbox">
+                <span class="checkmark btn-64">64</span>
+            </label>
+            <label class="container">
+                <input type="checkbox">
+                <span class="checkmark btn--15">-15</span>
+            </label>
+        </div>
+        <div>Sum: <span class="sum"></b></div>
+    </main>
+</body>
+</html>
+
+<style>
+    .sum::after {
+        content: counters(counter123, '-');
+    }
+
+    main {
+        counter-reset: counter123;
+    }
+
+/* 
+    .btn-10 {
+        counter-increment: counter123 10;
+    } */
+
+    .buttons {
+        position: relative;
+        display: flex;
+        gap: 10px;
+    }
+
+    .container {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    user-select: none;
+    margin: 10px;
+    }
+
+    .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    }
+
+    .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 80px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    }
+
+
+    .container input:checked ~ .checkmark {
+    background-color: yellow;
+    border: 2px solid black;
+    }
+
+    .container input:checked ~ .btn-10 {
+        counter-increment: counter123 10;
+    }
+
+    .container input:checked ~ .btn-32 {
+        counter-increment: counter123 32;
+    }
+
+    .container input:checked ~ .btn-64 {
+        counter-increment: counter123 64;
+    }
+
+    .container input:checked ~ .btn--15 {
+        counter-increment: counter123 -15;
+    }
+
+
+    .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    }
+
+    .container input:checked ~ .checkmark:after {
+    display: block;
+    }
+
+    button {
+        border: 1px solid black;
+        padding: 28px;
+        background-color: white;
+    }
+</style>

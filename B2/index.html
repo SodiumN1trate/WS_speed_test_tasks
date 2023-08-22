@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <label class="container">
+            <input type="checkbox">
+            <span class="label">Item 1</span>
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">
+            <input type="checkbox">
+            <span class="label">Item 2</span>
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">
+            <input type="checkbox">
+            <span class="label">Item 3</span>
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">
+            <input type="checkbox">
+            <span class="label">Item 4</span>
+            <span class="checkmark"></span>
+        </label>
+    </main>
+</body>
+</html>
+
+<!-- No animation  -->
+
+<style>
+    main {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .label {
+        transition: 0.3s all;
+    }
+
+    .container {
+        user-select: none;
+        display: flex;
+        align-items: center;
+        height: 36px;
+        position: relative;
+        padding-left: 35px;
+    }
+
+    .container input {
+        width: 0;
+        height: 0;
+        position: absolute;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 1px solid black;
+        height: 35px;
+        width: 25px;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .container input:checked ~ .label {
+        font-style: italic;
+        opacity: 0.7;
+        position: relative;
+        /* text-decoration: line-through; */
+    }
+
+    .container input ~ .label::after {
+        width: 0%;
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transition: 0.5s all;
+    }
+
+    .container input:checked ~ .label::after {
+        border-bottom: 1px solid black;
+        width: 100%;
+    }
+
+    .container input:checked ~ .checkmark {
+        border: none;
+    }
+
+    .container input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    .container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 10px;
+        height: 15px;
+        border: solid black;
+        border-width: 0 1px 1px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+</style>

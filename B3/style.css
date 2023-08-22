@@ -1,0 +1,50 @@
+/**
+Your Code
+ */
+
+.photos {
+    counter-reset: images 0;
+}
+
+.photo-item {
+    display: block;
+ }
+
+.photo-item:nth-child(-n+8) {
+    display: block !important;
+}
+
+
+.photo-item:not(:nth-child(-n+8))  {
+    counter-increment: images 1;
+    position: absolute;
+    opacity: 0;
+}
+
+.photo-item:last-child {
+    display: block !important;
+    position: relative;
+    opacity: 1;
+}
+
+
+.photos:has(> :nth-child(-n+8):last-child) > .photo-item:last-child::after  {
+    content: none;
+}
+
+.photo-item:last-child::after {
+    content: '+ ' counters(images, '.', decimal) ' ';
+    background-color: rgba(0, 0, 0, 0.653);
+    display: flex;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    /* opacity: 0.5; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}

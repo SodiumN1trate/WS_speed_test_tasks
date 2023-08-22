@@ -1,0 +1,42 @@
+.red {
+    animation: red 8s linear infinite;
+}
+
+.orange {
+    animation: orange 8s linear infinite;
+}
+
+.green {
+    animation: green 8s linear infinite;
+}
+
+.container > div  {
+    animation-timing-function: step-end;
+}
+
+@keyframes red {
+    62.5% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes orange {
+    50% {
+        opacity: 1;
+    }
+    62.5% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes green {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}

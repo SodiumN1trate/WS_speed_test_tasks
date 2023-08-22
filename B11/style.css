@@ -1,0 +1,116 @@
+:root {
+    --background: #FFDA7E;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--background);
+    transition: 1s all;
+    /* background-image: url(images/1.png); */
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+}
+
+.rotator {
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    text-align: center;
+    transition: 1s all;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.buttons {
+    position: absolute;
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    left: 100px;
+}
+
+body:has(.buttons > .day-button:focus) {
+    background-color: #FFDA7E;
+}
+
+body:has(.buttons > .night-button:focus) {
+    background-color: #080818;
+}
+
+body:has(.buttons > .day-button:focus) > .rotator {
+    transform: rotate(0deg);
+}
+
+body:has(.buttons > .night-button:focus) > .rotator {
+    transform: rotate(-180deg);
+}
+
+button {
+    padding: 10px 24px;
+    background-color: orange;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg); 
+    } to {
+        transform: rotate(180deg); 
+    }
+}
+
+.clouds {
+    position: relative;
+    /* right: -300px; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 100px;
+    width: 100%;
+    top: 15vh;
+}
+
+.clouds > img:nth-child(1) {
+    opacity: 0.7;
+    top: 5px;
+    animation: clouds 60s linear infinite;
+    right: -300px;
+}
+
+.clouds > img:nth-child(2) {
+    opacity: 0.8;
+    animation: clouds 75s linear infinite;
+    right: -300px;
+}
+
+.clouds img {
+    position: absolute;
+}
+
+@keyframes clouds {
+    from {
+        right: -300px;
+    } to {
+        right: 110vw;
+    }
+    
+}
